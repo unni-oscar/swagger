@@ -1,4 +1,4 @@
-wagger is a specification format for describing REST APS. From this spec, you can create interative documentation, automate test scripts and more. Swagger is also called OpenAPI Specification and its a great tool to Design, Build, Consume and document Restfull API
+Swagger is a specification format for describing REST APS. From this spec, you can create interative documentation, automate test scripts and more. Swagger is also called OpenAPI Specification and its a great tool to Design, Build, Consume and document Restfull API
 
 The heart of Swagger is its specification. The Swagger spec is the rulebook that standardizes API practices (how to define parameters, paths, responses, models, etc). And every other part of Swagger is just a way of appropriating or creating API documentation that works with these rules.
 
