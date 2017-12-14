@@ -1,0 +1,233 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "A Blog API",
+    "description": "This is to showcase how to use document your REST API by swagger editor by YAML",
+    "version": "1.0.0"
+  },
+  "host": "jsonplaceholder.typicode.com",
+  "schemes": [
+    "http"
+  ],
+  "basePath": "/",
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/posts": {
+      "get": {
+        "summary": "Get all the posts",
+        "description": "The Posts endpont returns all the posts in the typicode fake blog\n",
+        "tags": [
+          "Posts"
+        ],
+        "responses": {
+          "200": {
+            "description": "An array of posts",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Post"
+              }
+            }
+          },
+          "default": {
+            "description": "Unexpected error",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Create post",
+        "description": "This endpoint allows to create a new post with the JSON provided in the post param in the body\n",
+        "tags": [
+          "Posts"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "post",
+            "description": "The properties of the post to be created",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/NewPost"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "An array of posts",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Post"
+              }
+            }
+          },
+          "default": {
+            "description": "Unexpected error",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "put": {
+        "summary": "Update a Post",
+        "description": "The endpoint allows to update a post\n",
+        "tags": [
+          "Posts"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "post",
+            "description": "The properties of the post to be updated",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Post"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The post has updated"
+          },
+          "default": {
+            "description": "Unexpected error",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/posts/{id}": {
+      "get": {
+        "summary": "Get a specified post",
+        "description": "Get the post specidifed in the path as \"id\"\n",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Id of the post which is to be fetched",
+            "required": true,
+            "type": "number",
+            "format": "int"
+          }
+        ],
+        "tags": [
+          "Posts"
+        ],
+        "responses": {
+          "200": {
+            "description": "An array of posts",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Post"
+              }
+            }
+          },
+          "default": {
+            "description": "Unexpected error",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete Post",
+        "description": "The endpoint allows to delte a post\n",
+        "tags": [
+          "Posts"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Id of the post which is to be deleted",
+            "required": true,
+            "type": "number",
+            "format": "int"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The newly created post"
+          },
+          "default": {
+            "description": "Unexpected error",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Post": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "number",
+          "description": "Id of the post"
+        },
+        "title": {
+          "type": "string",
+          "description": "Title of the post"
+        },
+        "body": {
+          "type": "string",
+          "description": "Content of the post."
+        },
+        "userId": {
+          "type": "number",
+          "description": "Id of the user who created post"
+        }
+      }
+    },
+    "NewPost": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string",
+          "description": "Title of the post"
+        },
+        "body": {
+          "type": "string",
+          "description": "Content of the post."
+        },
+        "userId": {
+          "type": "number",
+          "description": "Id of the user who created post"
+        }
+      }
+    },
+    "Error": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "fields": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}
