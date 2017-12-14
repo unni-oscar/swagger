@@ -79,35 +79,6 @@
             }
           }
         }
-      },
-      "put": {
-        "summary": "Update a Post",
-        "description": "The endpoint allows to update a post\n",
-        "tags": [
-          "Posts"
-        ],
-        "parameters": [
-          {
-            "in": "body",
-            "name": "post",
-            "description": "The properties of the post to be updated",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/Post"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "The post has updated"
-          },
-          "default": {
-            "description": "Unexpected error",
-            "schema": {
-              "$ref": "#/definitions/Error"
-            }
-          }
-        }
       }
     },
     "/posts/{id}": {
@@ -145,9 +116,46 @@
           }
         }
       },
+      "put": {
+        "summary": "Update a Post",
+        "description": "The endpoint allows to update a post\n",
+        "tags": [
+          "Posts"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Id of the post which is to be updated",
+            "required": true,
+            "type": "number",
+            "format": "int"
+          },
+          {
+            "in": "body",
+            "name": "post",
+            "description": "The properties of the post to be created",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/NewPost"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The post has updated"
+          },
+          "default": {
+            "description": "Unexpected error",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
       "delete": {
         "summary": "Delete Post",
-        "description": "The endpoint allows to delte a post\n",
+        "description": "The endpoint allows to delete a post\n",
         "tags": [
           "Posts"
         ],
